@@ -1,0 +1,41 @@
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: rgba(26, 27, 38, 0.9);
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: #ffffff;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+#workspaces button.active {
+    background-color: rgba(51, 204, 255, 0.3);
+}
+
+#clock,
+#cpu,
+#memory,
+#network,
+#pulseaudio {
+    padding: 0 10px;
+    margin: 0 5px;
+    background-color: rgba(51, 204, 255, 0.1);
+    border-radius: 5px;
+}
+
+#cpu {
+    background-color: rgba(255, 100, 100, 0.1);
+}
+
+#memory {
+    background-color: rgba(100, 255, 100, 0.1);
+}

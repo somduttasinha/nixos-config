@@ -1,0 +1,99 @@
+{
+  "nodes": {
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772218752,
+        "narHash": "sha256-G8nArvOTZXU8DRvrzAdz3Elcj6kA/vMtvY9mrGLATtA=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "f3a30376bb9eb2f6f61816be7d6ed954b6d2a3b9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1771848320,
+        "narHash": "sha256-0MAd+0mun3K/Ns8JATeHT1sX28faLII5hVLq0L3BdZU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2fc6539b481e1d2569f25f8799236694180c0993",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-master": {
+      "locked": {
+        "lastModified": 1772317101,
+        "narHash": "sha256-VZN8muGV3/pBPSDmTmpRNfXAMX20Xj/TRf27HkP0c10=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "045d3568e250893829ff4aea32dc0699aab5f48b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1771848320,
+        "narHash": "sha256-0MAd+0mun3K/Ns8JATeHT1sX28faLII5hVLq0L3BdZU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2fc6539b481e1d2569f25f8799236694180c0993",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nvim-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1766077168,
+        "narHash": "sha256-3y0BAqUwJmQlC1ChwzstpPcKpeHIJscrPiPYx3w3GtI=",
+        "owner": "somduttasinha",
+        "repo": "nvim",
+        "rev": "d97f70736008cdc0befede2360177e2010daccaf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "somduttasinha",
+        "repo": "nvim",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-master": "nixpkgs-master",
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "nvim-config": "nvim-config"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
