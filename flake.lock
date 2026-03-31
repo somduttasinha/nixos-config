@@ -68,29 +68,12 @@
         "type": "github"
       }
     },
-    "nvim-config": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1766077168,
-        "narHash": "sha256-3y0BAqUwJmQlC1ChwzstpPcKpeHIJscrPiPYx3w3GtI=",
-        "owner": "somduttasinha",
-        "repo": "nvim",
-        "rev": "d97f70736008cdc0befede2360177e2010daccaf",
-        "type": "github"
-      },
-      "original": {
-        "owner": "somduttasinha",
-        "repo": "nvim",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-master": "nixpkgs-master",
-        "nixpkgs-unstable": "nixpkgs-unstable",
-        "nvim-config": "nvim-config"
+        "nixpkgs-unstable": "nixpkgs-unstable"
       }
     }
   },

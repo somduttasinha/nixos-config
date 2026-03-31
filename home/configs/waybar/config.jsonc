@@ -6,7 +6,9 @@
     
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["clock"],
-    "modules-right": ["cpu", "memory", "disk", "pulseaudio", "network"],
+    "modules-right": ["tray": {
+        "spacing": 10
+    }, "cpu", "memory", "disk", "pulseaudio", "network"],
     
     "hyprland/workspaces": {
         "format": "{id}",
@@ -14,7 +16,7 @@
     },
     
     "clock": {
-        "format": " {:%H:%M}",
+        "format": " {:%H:%M}   {:%a %b %d}",
         "format-alt": " {:%A, %B %d, %Y}"
     },
     

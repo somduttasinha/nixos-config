@@ -13,7 +13,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "bern"; # Define your hostname.
+  networking.hostName = "chronos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -36,8 +36,27 @@
     useXkbConfig = false; # use xkb.options in tty.
   };
 
-  # Enable the X11 windowing system.
+  # Enable the X11 windowing system (needed for XWayland).
   services.xserver.enable = true;
+  services.xserver.displayManager.lightdm.enable = false;
+
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    glib
+    zlib
+    stdenv.cc.cc.lib
+  ];
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd ${pkgs.hyprland}/bin/start-hyprland";
+        user = "greeter";
+      };
+    };
+  };
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
@@ -69,13 +88,11 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  services.tailscale.enable = true;
-
   # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.som = {
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = [ "wheel" "sudo" "docker"]; # Enable 'sudo' for the user.
+    extraGroups = [ "wheel" "sudo" "docker" "input" "video" ]; # Enable 'sudo' for the user.
     packages = with pkgs; [
       tree
     ];
@@ -95,25 +112,31 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    perf
+    wireguard-tools
     ghostty
     git
     neovim
     waybar
     rofi
-    dunst
     psmisc
     networkmanagerapplet
     tmux
     libreoffice
+    slack
     btop
+    dropbox-cli
     swww
     spotify
     rustup
     nodejs
     unzip
+    zip
     clang
     llvm
     ripgrep
@@ -128,18 +151,12 @@
     fzf
     fishPlugins.grc
     grc
+    dnsutils
+    keepassxc
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      zlib
-      stdenv.cc.cc.lib
-    ];
-  };
-
   programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
@@ -154,9 +171,9 @@
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22];
   networking.firewall.allowedUDPPorts = [ config.services.tailscale.port ];
-  networking.firewall.trustedInterfaces = [ "tailscale0" ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
+
+  networking.wireguard.enable = true;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
@@ -180,6 +197,6 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 
 }

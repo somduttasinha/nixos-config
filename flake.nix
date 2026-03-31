@@ -13,13 +13,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nvim-config = {
-      url = "github:somduttasinha/nvim";
-      flake = false;
-    };
-  };
+};
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-master, home-manager, nvim-config, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-master, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
@@ -50,8 +46,22 @@
         ];
       };
 
-      # work host — add later
-      # work = nixpkgs.lib.nixosSystem { ... };
+      work = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/work/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit inputs pkgs-unstable pkgs-master;
+            };
+            home-manager.users.som = import ./home/work.nix;
+          }
+        ];
+      };
     };
   };
 }

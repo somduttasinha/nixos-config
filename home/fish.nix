@@ -2,8 +2,49 @@
   programs.fish = {
     enable = true;
     shellAliases = {
-      cl = "clear";
+      cl    = "clear";
+      v     = "nvim";
+      lt    = "cd /home/som/longshot/projects";
+      ta    = "tmux a";
+      llg   = "/home/som/go/bin/lg";
+      lg    = "lazygit";
+      ai    = "claude";
+      sv    = "source .venv/bin/activate.fish";
+      db    = "cd '/home/som/Seamless Dropbox/Som Sinha'";
     };
+    shellInit = ''
+      # PATH additions
+      fish_add_path ~/.local/bin
+      fish_add_path ~/go/bin
+      fish_add_path ~/.pyenv/bin
+      fish_add_path ~/.cargo/bin
+      fish_add_path ~/.opencode/bin
+
+      # Use consistent tmux socket path when connecting over SSH
+      if set -q SSH_CLIENT; or set -q SSH_TTY
+        set -gx TMUX_TMPDIR /tmp
+      end
+
+      # Go
+      set -gx GOPATH $HOME/go
+      set -gx GOPRIVATE github.com/longshotsyndicate
+
+      # Python / pyenv
+      set -gx PYENV_ROOT $HOME/.pyenv
+      if command -q pyenv
+        pyenv init - | source
+      end
+
+      # Longshot / work
+      set -gx BURNS_ENV DEV
+      set -gx CONFIG_URL http://config.longshot.internal:8033
+      set -gx SERVICE_HOST multi.dub.dev.longshot.internal
+      set -gx DOCKERHUB_USERNAME somsinhalongshot
+      # Secrets (GH_TOKEN, DOCKERHUB_PASSWORD) are loaded from ~/.config/fish/secrets.fish
+      if test -f ~/.config/fish/secrets.fish
+        source ~/.config/fish/secrets.fish
+      end
+    '';
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
       fish_vi_key_bindings # Enable vim motions

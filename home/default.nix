@@ -1,6 +1,8 @@
 { inputs, pkgs, pkgs-unstable, pkgs-master, ... }: {
   imports = [
     ./hyprland.nix
+    ./mako.nix
+    ./tmux.nix
     ./waybar.nix
     ./ghostty.nix
     ./fish.nix
@@ -23,7 +25,7 @@
     hello
     neovide
     zathura
-    sxiv
+    imv
     grim
     slurp
     cliphist
@@ -40,6 +42,11 @@
     python314
     lazygit
     htop
+    w3m
+    gnumake
+    gcc
+    jq
+    sshpass
   ] ++ (with pkgs-unstable; [
     ruff
     ty
@@ -54,9 +61,14 @@
   xdg.mimeApps.defaultApplications = {
     "text/plain" = ["neovide.desktop"];
     "application/pdf" = ["zathura.desktop"];
-    "image/*" = ["sxiv.desktop"];
+    "image/*" = ["imv.desktop"];
     "video/*" = ["mpv.desktop"];
   };
+
+  xdg.configFile."imv/config".text = ''
+    [binds]
+    y = exec wl-copy --type "$(xdg-mime query filetype "$imv_current_file")" < "$imv_current_file"
+  '';
 
   programs.home-manager.enable = true;
 }
