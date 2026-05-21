@@ -35,6 +35,9 @@
         pyenv init - | source
       end
 
+      # NixOS: propagate nix-ld libs so dynamically linked packages (e.g. ray) work outside nix-shell
+      set -gx LD_LIBRARY_PATH $NIX_LD_LIBRARY_PATH $LD_LIBRARY_PATH
+
       # Longshot / work
       set -gx BURNS_ENV DEV
       set -gx CONFIG_URL http://config.longshot.internal:8033

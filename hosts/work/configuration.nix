@@ -64,6 +64,11 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   # Enable sound.
   # services.pulseaudio.enable = true;
@@ -79,6 +84,11 @@
   };
 
   services.blueman.enable = true;
+
+  swapDevices = [{
+    device = "/swapfile";
+    size = 131072; # 128GB in MiB
+  }];
 
   virtualisation.docker = {
     enable = true;
@@ -152,6 +162,7 @@
     grc
     dnsutils
     keepassxc
+    glab
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

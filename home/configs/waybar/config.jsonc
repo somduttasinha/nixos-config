@@ -18,8 +18,8 @@
     },
     
     "clock": {
-        "format": " {:%H:%M}   {:%a %b %d}",
-        "format-alt": " {:%A, %B %d, %Y}"
+        "format": "{:%H:%M  %a %b %d}",
+        "format-alt": "{:%A, %B %d, %Y}"
     },
     
     "cpu": {
