@@ -137,7 +137,6 @@
     nodejs
     unzip
     zip
-    clang
     llvm
     ripgrep
     go

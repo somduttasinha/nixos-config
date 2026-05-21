@@ -38,21 +38,32 @@
     tree-sitter
     pavucontrol
     xdotool
-    llvmPackages_20.clang-tools
+    llvmPackages_21.clang-tools
+    (pkgs.lib.hiPrio clang_21)
+    vimPlugins.clangd_extensions-nvim
     python314
+    uv
+    ninja
     lazygit
     htop
     w3m
     gnumake
-    gcc
+    gcc15
     jq
     sshpass
+    opencode
+    openssl
+    xfce.thunar
   ] ++ (with pkgs-unstable; [
     ruff
     ty
     opencode
     claude-code
+    cmake
+    gdb
   ]);
+
+  home.sessionPath = [ "$HOME/.local/bin" ];
 
   home.sessionVariables = {
     EDITOR = "neovim";

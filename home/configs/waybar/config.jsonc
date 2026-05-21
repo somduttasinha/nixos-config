@@ -6,10 +6,12 @@
     
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["clock"],
-    "modules-right": ["tray": {
-        "spacing": 10
-    }, "cpu", "memory", "disk", "pulseaudio", "network"],
+    "modules-right": ["tray", "cpu", "memory", "disk", "pulseaudio", "network"],
     
+    "tray": {
+        "spacing": 10
+    },
+
     "hyprland/workspaces": {
         "format": "{id}",
         "active-only": false

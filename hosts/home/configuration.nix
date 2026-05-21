@@ -51,7 +51,10 @@
   # OR
   services.pipewire = {
     enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
   };
 
   hardware.bluetooth = {
@@ -114,7 +117,6 @@
     rustup
     nodejs
     unzip
-    clang
     llvm
     ripgrep
     go
