@@ -85,6 +85,8 @@
 
   services.blueman.enable = true;
 
+  services.gnome.gnome-keyring.enable = true;
+
   swapDevices = [{
     device = "/swapfile";
     size = 131072; # 128GB in MiB
@@ -163,6 +165,7 @@
     dnsutils
     keepassxc
     glab
+    mysql-workbench
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

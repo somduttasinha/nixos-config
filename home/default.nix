@@ -39,6 +39,7 @@
     pavucontrol
     xdotool
     llvmPackages_21.clang-tools
+    llvmPackages_21.libcxx
     (pkgs.lib.hiPrio clang_21)
     vimPlugins.clangd_extensions-nvim
     python314
@@ -54,6 +55,8 @@
     opencode
     openssl
     xfce.thunar
+    mysql84
+    xonotic
   ] ++ (with pkgs-unstable; [
     ruff
     ty

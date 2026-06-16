@@ -20,11 +20,6 @@
       fish_add_path ~/.cargo/bin
       fish_add_path ~/.opencode/bin
 
-      # Use consistent tmux socket path when connecting over SSH
-      if set -q SSH_CLIENT; or set -q SSH_TTY
-        set -gx TMUX_TMPDIR /tmp
-      end
-
       # Go
       set -gx GOPATH $HOME/go
       set -gx GOPRIVATE github.com/longshotsyndicate
