@@ -57,6 +57,8 @@
     xfce.thunar
     mysql84
     xonotic
+    google-chrome
+    awscli2
   ] ++ (with pkgs-unstable; [
     ruff
     ty
